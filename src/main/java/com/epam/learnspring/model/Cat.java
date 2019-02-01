@@ -1,23 +1,11 @@
 package com.epam.learnspring.model;
 
-public class Cat {
+import org.springframework.stereotype.Service;
 
-    private String name;
-
-    public Cat() {
-    }
-
-    public Cat(String name) {
-
-        this.name = name;
-    }
-
+@Service
+public class Cat implements AnimalService{
+    @Override
     public String getName() {
-
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return "I am Cat!";
     }
 }

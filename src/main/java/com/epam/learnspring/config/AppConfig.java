@@ -1,6 +1,6 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.model.Message;
+import com.epam.learnspring.model.Dog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
 //    @Bean
-//    public Message message() {
-//        return new Message("cat is sleep...");
+//    public Dog dog() {
+//        return new Dog("Vaska");
 //    }
 }
