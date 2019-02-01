@@ -1,7 +1,5 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.model.Message;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

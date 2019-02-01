@@ -2,8 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="cat" class="com.epam.learnspring.model.Cat">
-        <constructor-arg value="Dimok"/>
+    <bean id="country" class="com.epam.learnspring.model.Country">
+        <constructor-arg value="Czech Republic"/>
+        <constructor-arg value="10610000"/>
+        <constructor-arg value="Prague"/>
     </bean>
 </beans>
