@@ -44,7 +44,7 @@ public class AppController {
     }
 
     @RequestMapping("/password/{password}")
-    public String getAdminInfo(@PathVariable("password") String password, Model model ) {
+    public String getAdminInfo(@PathVariable("password") String password, Model model) {
         model.addAttribute("password", password);
         model.addAttribute("passwordAfterEncode", new BCryptPasswordEncoder().encode(password));
         return "password";
