@@ -18,9 +18,8 @@ public class TableController {
     }
 
     @RequestMapping("/create")
-    public String getTableCreatingStatus(Model model) {
+    public String getTableCreationStatus(Model model) {
         model.addAttribute("status", createTable.getTableCreationStatus());
         return "create";
     }
-
 }

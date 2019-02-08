@@ -7,12 +7,10 @@ buildscript {
     }
 }
 
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
-
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -26,7 +24,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
-    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5.jre7'
     compile("org.springframework:spring-jdbc")
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.11.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.11.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.11.RELEASE'
+    
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
