@@ -11,8 +11,8 @@ public class CreateTable {
     }
 
     public String getTableCreationStatus() {
-            jdbcTemplate.execute("DROP TABLE IF EXISTS cats");
-            jdbcTemplate.execute("CREATE TABLEjf public.cats\n" +
+            jdbcTemplate.execute("DROP1 TABLE IF EXISTS cats");
+            jdbcTemplate.execute("CREATE TABLE public.cats\n" +
                     "(\n" +
                     "  id integer NOT NULL,\n" +
                     "  name character varying(255),\n" +

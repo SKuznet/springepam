@@ -1,14 +1,12 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.model.Dog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 public class AppConfig {
 
-//    @Bean
-//    public Dog dog() {
-//        return new Dog("Vaska");
-//    }
+
 }
