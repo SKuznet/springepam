@@ -1,18 +1,20 @@
 package com.epam.learnspring.model;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-public class Dog implements AnimalService {
+@Service
+public class Dog {
 
+    private String bark;
     private String name;
 
     public Dog() {
+
     }
 
-    public Dog(String name) {
+    public Dog(String name, String bark) {
         this.name = name;
+        this.bark = bark;
     }
 
     public String getName() {
@@ -22,4 +24,13 @@ public class Dog implements AnimalService {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getBark() {
+        return bark;
+    }
+
+    public void setBark(String bark) {
+        this.bark = bark;
+    }
+
 }
