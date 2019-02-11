@@ -3,6 +3,7 @@ package com.epam.learnspring.controller;
 import com.epam.learnspring.model.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,7 @@ public class AppController {
         return "admin";
     }
 
+    @Secured({"ROLE_USER, ROLE_ADMIN"})
     @RequestMapping("/password/{password}")
     public String getAdminInfo(@PathVariable("password") String password, Model model) {
         model.addAttribute("password", password);
