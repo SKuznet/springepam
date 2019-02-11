@@ -3,7 +3,7 @@ package com.epam.learnspring.model;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Dog {
+public class Dog implements AnimalService{
 
     private String bark;
     private String name;
