@@ -4,6 +4,7 @@ import com.epam.learnspring.model.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,7 @@ public class AppController {
     // http://localhost:8080/cat
     @RequestMapping("/cat")
     public String getCatInfo(Model model) {
-        model.addAttribute("name", animalService.getName());
+        model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
         return "cat";
     }
 
