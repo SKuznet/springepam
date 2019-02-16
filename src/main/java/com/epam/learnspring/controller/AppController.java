@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
+
     @Autowired
     @Value("Murzik")
     private Message message;
