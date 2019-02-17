@@ -13,8 +13,8 @@ public class Cat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cat_id")
     private Long id;
-    @Column
-    @Type(type = "text")
+//    @Column
+//    @Type(type = "text")
     private String name;
 //    @Transient
     private String description;

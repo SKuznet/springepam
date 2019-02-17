@@ -13,7 +13,6 @@ import java.util.List;
 public class CatController {
     private final CatService catService;
 
-    @Autowired
     public CatController(CatService catService) {
         this.catService = catService;
     }

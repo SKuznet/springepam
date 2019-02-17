@@ -30,6 +30,7 @@ public class AppController {
 
     // http://localhost:8080/cat
     @RequestMapping("/cat")
+    @Secured({"ROLE_USER, ROLE_ADMIN"})
     public String getCatInfo(Model model) {
         model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
         return "cat";
@@ -45,7 +46,6 @@ public class AppController {
         return "admin";
     }
 
-    @Secured({"ROLE_USER, ROLE_ADMIN"})
     @RequestMapping("/password/{password}")
     public String getAdminInfo(@PathVariable("password") String password, Model model) {
         model.addAttribute("password", password);
