@@ -1,7 +1,5 @@
 package com.epam.learnspring.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,4 +20,5 @@ public class Message {
     public void setInfo(String info) {
         this.info = info;
     }
+
 }
