@@ -36,6 +36,11 @@ public class AppController {
         return "cat";
     }
 
+    @RequestMapping("/")
+    public String getMenu() {
+        return "catcrud";
+    }
+
     @RequestMapping("/user")
     public String getUserInfo() {
         return "user";
