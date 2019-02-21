@@ -24,8 +24,8 @@ public class AppController {
     private Message message;
 
     // XML - context
-    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
-    private User user = (User) context.getBean("user");
+//    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
+//    private User user = (User) context.getBean("user");
 
     @Autowired
     @Qualifier(value = "vladUserImpl")
@@ -34,7 +34,7 @@ public class AppController {
     @RequestMapping("/cat")
     public String getCatInfo(Model model) {
         model.addAttribute("name", userService.getName());
-        model.addAttribute("username", user.getName());
+//        model.addAttribute("username", user.getName());
         return "cat";
     }
 }
