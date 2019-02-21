@@ -1,7 +1,10 @@
 package com.epam.learnspring.controller;
 
 import com.epam.learnspring.model.Message;
+import com.epam.learnspring.model.User;
+import com.epam.learnspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,12 +24,17 @@ public class AppController {
     private Message message;
 
     // XML - context
-//    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
-//    private Message message = (Message) context.getBean("message");
+    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
+    private User user = (User) context.getBean("user");
+
+    @Autowired
+    @Qualifier(value = "vladUserImpl")
+    private UserService userService;
 
     @RequestMapping("/cat")
     public String getCatInfo(Model model) {
-        model.addAttribute("name", message.getInfo());
+        model.addAttribute("name", userService.getName());
+        model.addAttribute("username", user.getName());
         return "cat";
     }
 }

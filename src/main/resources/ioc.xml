@@ -9,8 +9,9 @@
 
 
    <beans>
-       <bean id="message" class="com.epam.learnspring.model.Message">
-           <property name="info" value="FROM_IOC!!!"></property>
+       <bean id="user" class="com.epam.learnspring.model.User">
+           <!--<property name="name" value="FROM_IOC!!! USER"></property>-->
+           <constructor-arg value="FROM_IOC!!! USER!!!"/>
        </bean>
    </beans>
 
