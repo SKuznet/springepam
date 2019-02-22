@@ -26,3 +26,8 @@ out
 .idea
 target
 *.iml
+# gradle wrapper
+.gradle/
+gradle/
+gradlew
+gradlew.bat
