@@ -13,13 +13,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @PropertySource(value = "util.properties")
 public class DataConfig {
 
+    @Autowired
     private Environment environment;
 
     public Environment getEnvironment() {
         return environment;
     }
 
-    @Autowired
     public void setEnvironment(Environment environment) {
         this.environment = environment;
     }
