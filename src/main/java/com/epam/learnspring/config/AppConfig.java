@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public Message message() {
-        return new Message("cat is sleep...");
-    }
+//    @Bean
+//    public Message message() {
+//        return new Message("cat is sleep...");
+//    }
 
 }

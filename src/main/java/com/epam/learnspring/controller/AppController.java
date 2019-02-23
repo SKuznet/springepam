@@ -37,4 +37,15 @@ public class AppController {
 //        model.addAttribute("username", user.getName());
         return "cat";
     }
+
+    @RequestMapping("/user")
+    public String getUserInfo() {
+        return "user";
+    }
+
+    @RequestMapping("/admin")
+    public String getAdminInfo() {
+        return "admin";
+    }
+
 }
