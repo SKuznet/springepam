@@ -1,8 +1,9 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.model.Message;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 public class AppConfig {
@@ -11,5 +12,4 @@ public class AppConfig {
 //    public Message message() {
 //        return new Message("cat is sleep...");
 //    }
-
 }
