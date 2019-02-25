@@ -15,7 +15,7 @@ public class KnightController {
 
     @RequestMapping("/info")
     public String getKnightInfo(Model model) {
-        model.addAttribute("action", knightService.getAchievement());
+        model.addAttribute("action", knightService.getAchievement("dragon"));
         return "knight";
     }
 

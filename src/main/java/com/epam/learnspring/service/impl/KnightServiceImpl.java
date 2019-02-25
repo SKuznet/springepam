@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 public class KnightServiceImpl implements KnightService {
 
     @Override
-    public String getAchievement() {
-        return "I salve a dragon!";
+    public String getAchievement(String val) {
+        return "I salve a " + val + "!";
     }
 
 }

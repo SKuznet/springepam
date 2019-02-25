@@ -1,9 +1,7 @@
 package com.epam.learnspring.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,6 +21,11 @@ public class BardAspect {
         System.err.println("Lalala.......");
         System.err.println("Knight defeat a dragon by " + totalTime + "ms.");
         return obj;
+    }
+
+    @After("execution(* com.epam.learnspring.service.impl.KnightServiceImpl.*(..))")
+    public void getSongAfter() {
+        System.out.println("after LAHAHAHA");
     }
 
 }
