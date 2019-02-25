@@ -1,5 +1,7 @@
 package com.epam.learnspring.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -11,6 +13,7 @@ public class Cat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cat_id")
     private Long id;
+    @Type(type = "text")
     private String name;
     @Transient
     private String description;

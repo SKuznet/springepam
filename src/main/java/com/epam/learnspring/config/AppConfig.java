@@ -3,13 +3,14 @@ package com.epam.learnspring.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@Component
 @ImportResource("classpath:ioc.xml")
 @EnableAspectJAutoProxy
 public class AppConfig {
+
+
 
 //    @Bean
 //    public Message message() {
