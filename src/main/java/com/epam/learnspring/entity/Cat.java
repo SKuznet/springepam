@@ -15,7 +15,7 @@ public class Cat {
     private Long id;
     @Type(type = "text")
     private String name;
-    @Transient
+//    @Transient
     private String description;
 
     @Column(columnDefinition = "DATE")
