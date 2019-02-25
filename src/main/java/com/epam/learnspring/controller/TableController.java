@@ -12,15 +12,15 @@ public class TableController {
 
     private CreateTable createTable;
 
-    @Autowired
-    public TableController(CreateTable createTable) {
-        this.createTable = createTable;
-    }
+//    @Autowired
+//    public TableController(CreateTable createTable) {
+//        this.createTable = createTable;
+//    }
 
 
     @RequestMapping("/create")
     public String getTableCreationStatus(Model model) {
-        model.addAttribute("status", createTable.getTableCreationStatus());
+//        model.addAttribute("status", createTable.getTableCreationStatus());
         return "create";
     }
 

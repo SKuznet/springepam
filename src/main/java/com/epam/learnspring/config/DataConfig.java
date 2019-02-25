@@ -16,47 +16,47 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 @PropertySource(value = "auth.properties")
 public class DataConfig {
 
-    @Autowired
-    private Environment environment;
-
-    public Environment getEnvironment() {
-        return environment;
-    }
-
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
-    @Bean
-    public DriverManagerDataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.postgresql.driver"));
-        dataSource.setUrl(environment.getRequiredProperty("jdbc.postgresql.url"));
-        dataSource.setUsername(environment.getRequiredProperty("jdbc.postgresql.username"));
-        dataSource.setPassword(environment.getRequiredProperty("jdbc.postgresql.password"));
-        dataSource.getUsername();
-        return dataSource;
-    }
-
-    @Bean
-    public JdbcTemplate jdbcTemplate() {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(dataSource());
-        return jdbcTemplate;
-    }
-
-    @Bean
-    public CreateTable createTable() {
-        return new CreateTable(jdbcTemplate());
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
-        jdbcDao.setDataSource(dataSource());
-        jdbcDao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
-        jdbcDao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
-        return jdbcDao;
-    }
+//    @Autowired
+//    private Environment environment;
+//
+//    public Environment getEnvironment() {
+//        return environment;
+//    }
+//
+//    public void setEnvironment(Environment environment) {
+//        this.environment = environment;
+//    }
+//
+//    @Bean
+//    public DriverManagerDataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.postgresql.driver"));
+//        dataSource.setUrl(environment.getRequiredProperty("jdbc.postgresql.url"));
+//        dataSource.setUsername(environment.getRequiredProperty("jdbc.postgresql.username"));
+//        dataSource.setPassword(environment.getRequiredProperty("jdbc.postgresql.password"));
+//        dataSource.getUsername();
+//        return dataSource;
+//    }
+//
+//    @Bean
+//    public JdbcTemplate jdbcTemplate() {
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+//        jdbcTemplate.setDataSource(dataSource());
+//        return jdbcTemplate;
+//    }
+//
+//    @Bean
+//    public CreateTable createTable() {
+//        return new CreateTable(jdbcTemplate());
+//    }
+//
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
+//        jdbcDao.setDataSource(dataSource());
+//        jdbcDao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+//        jdbcDao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+//        return jdbcDao;
+//    }
 
 }
