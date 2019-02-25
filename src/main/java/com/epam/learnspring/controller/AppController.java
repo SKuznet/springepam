@@ -1,5 +1,6 @@
 package com.epam.learnspring.controller;
 
+import com.epam.learnspring.dao.CatDao;
 import com.epam.learnspring.model.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
     private AnimalService animalService;
+    @Autowired
+    private CatDao catDao;
 
     public AnimalService getAnimalService() {
         return animalService;
@@ -38,6 +41,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String getMenu() {
+        catDao.getCatListByName("Barsik");
         return "catcrud";
     }
 

@@ -17,7 +17,9 @@
                 dataType: 'json',
                 async: false,
                 success: function (result) {
-                    $('#response').html(JSON.stringify(result));
+                    var name = result.name;
+
+                    $('#response').html(name);
                 },
                 error: function (jqXHR) {
                     $('#response').html(JSON.stringify(jqXHR));
