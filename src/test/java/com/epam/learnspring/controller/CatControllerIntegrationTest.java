@@ -1,15 +1,15 @@
 package com.epam.learnspring.controller;
 
 import com.epam.learnspring.entity.Cat;
+import com.epam.learnspring.entity.CatWoman;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -122,6 +122,20 @@ public class CatControllerIntegrationTest {
         Cat cat = new Cat();
         cat.setName("Barsik");
         cat.setDescription("Hungry");
+
+        CatWoman riska = new CatWoman();
+        riska.setName("Riska");
+        riska.setDescription("Good");
+
+        CatWoman murka = new CatWoman();
+        murka.setName("Murka");
+        murka.setDescription("angry");
+
+        List<CatWoman> catWomens = new ArrayList<>();
+        catWomens.add(riska);
+        catWomens.add(murka);
+
+        cat.setCatWomanList(catWomens);
         return cat;
     }
 }

@@ -4,6 +4,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cats")
@@ -18,6 +20,17 @@ public class Cat {
     private String name;
 //    @Transient
     private String description;
+
+    public List<CatWoman> getCatWomanList() {
+        return catWomanList;
+    }
+
+    public void setCatWomanList(List<CatWoman> catWomanList) {
+        this.catWomanList = catWomanList;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<CatWoman> catWomanList = new ArrayList<>();
 //    @Column(columnDefinition = "DATE")
 //    private LocalDate year;
 
