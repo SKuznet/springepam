@@ -1,7 +1,5 @@
 package com.epam.learnspring.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
