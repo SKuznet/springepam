@@ -1,0 +1,21 @@
++ Spring Application – Spring Boot
+
+Add Aspect and add logger will log all service methods
+
+SpringSecurity (UserDetailService from DB + H2 + sqlscripts for fill data to DB) – for AppController – with data from bean
+
+MVC (html || jsp) + crud operation from UI
+
+2 5 Entity (1 – for users, 2 for one-one, 2 many-to-many)
++ 1 - users
++ 2 - one-one = cow + udder
+
+Use DTO for one-to-one and many-to-many entities
+
+2 Controllers (one for one-to-one, many-to-many)
+
+Cover controllers with integrationtest
+
+BasicDao + 2 SpecificDao and implement 1 custom logic at specific dao
+
+Cover 2 DAO classes with spring-test (mockMVC)

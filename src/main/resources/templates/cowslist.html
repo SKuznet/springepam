@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body>
+<h1>This is my list of cows</h1>
+<div th:if="${totalElements}!=null">
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Info</th>
+            <th>Rename</th>
+            <th>Delete</th>
+
+        </tr>
+        <tr th:each="cow : ${cows}">
+            <td th:utext="${cow.id}">...</td>
+            <td th:utext="${cow.name}">...</td>
+            <td><a href="showMeCurrentCowPlease" th:href="@{/cows/{id}(id=${cow.id})}">read info</a></td>
+            <td><a href="renameCurrentCowPlease" th:href="@{/cows/{id}/update(id=${cow.id})}">update</a></td>
+            <td>
+                <form style="display:inline" th:action="@{/cows/{id}(id=${cow.id})}" th:method="delete">
+                    <button id="deleteCowDB" class="button3" type="submit">delete
+                    </button>
+                </form>
+                <!--<a href="deleteCurrentCowPlease" th:href="@{/cows/{id}/delete(id=${cow.id})}">delete</a>-->
+            </td>
+        </tr>
+    </table>
+</div>
+<p>Do you want to add some cow to my farm? Let's do it. Press <a href="/cows/add">I WANT TO ADD MY COW TO YOUR FARM</a>
+</p>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>

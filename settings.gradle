@@ -1,4 +1,0 @@
-rootProject.name = 'springgradleepam'
-include 'rest'
-include 'integrationtest'
-

@@ -1,6 +1,6 @@
-package com.epam.learnspring.dao.impl;
+package com.epam.springlesson2.dao.impl;
 
-import com.epam.learnspring.dao.BasicDao;
+import com.epam.springlesson2.dao.BasicDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,20 @@ import java.util.List;
 @Transactional
 public class BasicDaoImpl<T> implements BasicDao<T> {
     private final Class<T> entityClass;
-    @Autowired
     protected SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
 
     public BasicDaoImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -40,7 +52,7 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
     }
 
     @Override
-    public T getById(long id) {
+    public T getById(Long id) {
         return getSession().get(entityClass, id);
     }
 
@@ -49,16 +61,7 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
         CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = builder.createQuery(entityClass);
         Root<T> root = criteriaQuery.from(entityClass);
-
         criteriaQuery.select(root);
         return getSession().createQuery(criteriaQuery).list();
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    private Session getSession() {
-        return sessionFactory.getCurrentSession();
     }
 }

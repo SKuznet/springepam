@@ -1,15 +1,16 @@
-package com.epam.learnspring.dao;
+package com.epam.springlesson2.dao;
 
 import java.util.List;
 
 public interface BasicDao<T> {
+
     T add(T entity);
 
     T update(T entity);
 
     T delete(T entity);
 
-    T getById(long id);
+    T getById(Long id);
 
     List<T> getAll();
 }
