@@ -1,7 +1,6 @@
 package com.epam.learnspring.service.impl;
 
 import com.epam.learnspring.dao.EmployeeDao;
-import com.epam.learnspring.dto.EmployeeDto;
 import com.epam.learnspring.entity.Employee;
 import com.epam.learnspring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,10 @@ import java.util.List;
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeDao employeeDao;
-    private final EmployeeDto employeeDto;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeDao employeeDao, EmployeeDto employeeDto) {
+    public EmployeeServiceImpl(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
-        this.employeeDto = employeeDto;
     }
 
     @Override
@@ -36,8 +33,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeDto getById(long id) {
-        return employeeDto.getEmployeeDtoFromEmployee(employeeDao.getById(id));
+    public Employee getById(long id) {
+        return employeeDao.getById(id);
     }
 
     @Override

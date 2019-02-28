@@ -9,7 +9,7 @@
 
 <h:body>
     <script type="text/javascript">
-        var ROOT = '/cat';
+        var ROOT = '/film';
         var RestGet = function (id) {
             $.ajax({
                 type: 'GET',
@@ -111,8 +111,8 @@
                     <td>Get cat by id</td>
                     <td><code><strong>GET</strong></code></td>
                     <td>
-                        id: <input id="getCatId" value=""/>
-                        <button type="button" onclick="RestGet($('#getCatId').val())">Try</button>
+                        id: <input id="getId" value=""/>
+                        <button type="button" onclick="RestGet($('#getId').val())">Try</button>
                     </td>
                 </tr>
                 <tr>

@@ -1,10 +1,6 @@
 package com.epam.learnspring.aspect;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,11 +12,11 @@ public class BardAspect {
 //        System.out.println("lalala");
 //    }
 
-    @Pointcut("execution(* com.epam.learnspring.service.impl.KnightServiceImpl.getAchievement(..))")
+    /*@Pointcut("execution(* com.epam.learnspring.service.impl.KnightServiceImpl.getAchievement(..))")
     public void seriveMethod() {
 
-    }
-
+    }*/
+/*
     @Around("seriveMethod()")
     public Object action(ProceedingJoinPoint joinPoint) throws Throwable {
         long timeBefore = System.currentTimeMillis();
@@ -29,5 +25,5 @@ public class BardAspect {
         System.err.println("Lalala...");
         System.err.println("Knight defeat a dragon by " + totalTime + "ms.");
         return obj;
-    }
+    }*/
 }

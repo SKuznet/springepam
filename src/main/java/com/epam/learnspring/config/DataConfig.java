@@ -1,6 +1,5 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.service.CreateTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,11 +42,6 @@ public class DataConfig {
     @Autowired
     public void setEnvironment(Environment environment) {
         this.environment = environment;
-    }
-
-    @Bean
-    public CreateTable createTable() {
-        return new CreateTable(jdbcTemplate());
     }
 
     public DataSource getDataSource() {

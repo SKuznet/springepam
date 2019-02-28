@@ -1,6 +1,5 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.dto.EmployeeDto;
 import com.epam.learnspring.entity.Employee;
 import com.epam.learnspring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public EmployeeDto getEmployeeDtoById(@PathVariable(value = "id") long id) {
+    public Employee getEmployeeById(@PathVariable(value = "id") long id) {
         return employeeService.getById(id);
     }
 

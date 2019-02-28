@@ -1,8 +1,6 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.dto.EmployeeDto;
 import com.epam.learnspring.entity.Car;
-import com.epam.learnspring.entity.Cat;
 import com.epam.learnspring.entity.Employee;
 import org.junit.Test;
 import org.springframework.http.*;
@@ -29,16 +27,16 @@ public class EmployeeControllerIntegrationTest {
         Employee employee = createEmployee();
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<EmployeeDto> responseEntity = template.exchange(
+        ResponseEntity<Employee> responseEntity = template.exchange(
                 ROOT + GET_BY_ID + "/{id}",
                 HttpMethod.GET,
                 null,
-                EmployeeDto.class,
+                Employee.class,
                 employee.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        EmployeeDto employeeFromDB = responseEntity.getBody();
+        Employee employeeFromDB = responseEntity.getBody();
         assertNotNull(employeeFromDB);
 
     }
