@@ -1,4 +1,4 @@
-package com.epam.springlesson2.config;
+package com.epam.learnspring.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

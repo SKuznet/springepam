@@ -1,6 +1,6 @@
-package com.epam.springlesson2.dao.impl;
+package com.epam.learnspring.dao.impl;
 
-import com.epam.springlesson2.dao.BasicDao;
+import com.epam.learnspring.dao.BasicDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.epam.springlesson2.entity.enums;
+package com.epam.learnspring.entity.enums;
 
 public enum Role {
     ADMIN,

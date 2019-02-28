@@ -1,4 +1,4 @@
-package com.epam.springlesson2.config;
+package com.epam.learnspring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = "com.epam.springlesson2")
+@ComponentScan(basePackages = "com.epam.learnspring")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 

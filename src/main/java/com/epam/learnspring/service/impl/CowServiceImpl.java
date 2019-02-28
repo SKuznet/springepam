@@ -1,8 +1,8 @@
-package com.epam.springlesson2.service.impl;
+package com.epam.learnspring.service.impl;
 
-import com.epam.springlesson2.dao.CowDao;
-import com.epam.springlesson2.entity.Cow;
-import com.epam.springlesson2.service.CowService;
+import com.epam.learnspring.dao.CowDao;
+import com.epam.learnspring.entity.Cow;
+import com.epam.learnspring.service.CowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

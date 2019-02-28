@@ -1,7 +1,7 @@
-package com.epam.springlesson2.dao.impl;
+package com.epam.learnspring.dao.impl;
 
-import com.epam.springlesson2.dao.CowDao;
-import com.epam.springlesson2.entity.Cow;
+import com.epam.learnspring.dao.CowDao;
+import com.epam.learnspring.entity.Cow;
 
 
 public class CowDaoImpl extends BasicDaoImpl<Cow> implements CowDao {

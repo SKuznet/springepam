@@ -1,4 +1,4 @@
-package com.epam.springlesson2.entity;
+package com.epam.learnspring.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

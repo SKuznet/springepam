@@ -1,4 +1,4 @@
-package com.epam.springlesson2.config;
+package com.epam.learnspring.config;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSourse());
-        sessionFactory.setPackagesToScan("com.epam.springlesson2.entity");
+        sessionFactory.setPackagesToScan("com.epam.learnspring.entity");
         sessionFactory.setHibernateProperties(properties());
         return sessionFactory;
     }

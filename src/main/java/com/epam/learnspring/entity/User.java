@@ -1,6 +1,6 @@
-package com.epam.springlesson2.entity;
+package com.epam.learnspring.entity;
 
-import com.epam.springlesson2.entity.enums.Role;
+import com.epam.learnspring.entity.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

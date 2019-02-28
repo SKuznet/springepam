@@ -1,4 +1,4 @@
-package com.epam.springlesson2.dao;
+package com.epam.learnspring.dao;
 
 import java.util.List;
 

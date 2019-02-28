@@ -1,8 +1,8 @@
-package com.epam.springlesson2.config;
+package com.epam.learnspring.config;
 
-import com.epam.springlesson2.dao.CowDao;
-import com.epam.springlesson2.dao.impl.CowDaoImpl;
-import com.epam.springlesson2.entity.Cow;
+import com.epam.learnspring.dao.CowDao;
+import com.epam.learnspring.dao.impl.CowDaoImpl;
+import com.epam.learnspring.entity.Cow;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

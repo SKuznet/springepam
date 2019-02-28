@@ -1,7 +1,7 @@
-package com.epam.springlesson2.controller;
+package com.epam.learnspring.controller;
 
-import com.epam.springlesson2.entity.Cow;
-import com.epam.springlesson2.service.CowService;
+import com.epam.learnspring.entity.Cow;
+import com.epam.learnspring.service.CowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

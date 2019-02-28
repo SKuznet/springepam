@@ -1,6 +1,6 @@
-package com.epam.springlesson2.service;
+package com.epam.learnspring.service;
 
-import com.epam.springlesson2.entity.Cow;
+import com.epam.learnspring.entity.Cow;
 
 import java.util.List;
 
