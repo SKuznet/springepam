@@ -1,15 +1,29 @@
 package com.epam.learnspring.config;
 
+import com.epam.learnspring.dao.CatDao;
+import com.epam.learnspring.dao.EmployeeDao;
+import com.epam.learnspring.dao.impl.CatDaoImpl;
+import com.epam.learnspring.dao.impl.EmployeeDaoImpl;
+import com.epam.learnspring.entity.Cat;
+import com.epam.learnspring.entity.Employee;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.stereotype.Component;
 
 @Configuration
-@Component
 @ImportResource("classpath:ioc.xml")
 @EnableAspectJAutoProxy
 public class AppConfig {
 
+    @Bean
+    public CatDao catDao() {
+        return new CatDaoImpl(Cat.class);
+    }
+
+    @Bean
+    public EmployeeDao employeeDao() {
+        return new EmployeeDaoImpl(Employee.class);
+    }
 
 }

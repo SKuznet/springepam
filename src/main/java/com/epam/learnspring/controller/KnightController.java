@@ -1,6 +1,5 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.model.Knight;
 import com.epam.learnspring.service.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+// localhost:8080/knight/*
 @RequestMapping("/knight")
 public class KnightController {
 

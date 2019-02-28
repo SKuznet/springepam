@@ -1,15 +1,14 @@
 package com.epam.learnspring.model;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-@Service
-@Primary
 public class Dog implements AnimalService {
+
     private String name;
 
     public Dog() {
-
     }
 
     public Dog(String name) {

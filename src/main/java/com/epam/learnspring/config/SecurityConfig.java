@@ -13,10 +13,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity()
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     private UserDetailsService userDetailsService;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -26,9 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable().formLogin().defaultSuccessUrl("/", false);
     }
 
+    // NON PRODUCTION!!!
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+//        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+//    }
+
     @Override
-    public void configure(AuthenticationManagerBuilder managerBuilder) throws Exception {
-        managerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     private PasswordEncoder passwordEncoder() {
@@ -43,13 +50,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void setUserDetailsService(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
-/*  //Non production
-    @Override
-    public void configure(AuthenticationManagerBuilder managerBuilder) throws Exception {
-        managerBuilder.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-        managerBuilder.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-    }*/
-
-
 }
