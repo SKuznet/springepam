@@ -6,12 +6,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Let's go for a walk.</h1>
-
-<h5>See my <a href="/lionesses">COWs</a></h5>
+<h1 th:text="'Card of lioness '+${lioness.name}+' #'+${lioness.id}">Card of lioness</h1>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td th:utext="${lioness.id}">...</td>
+            <td th:utext="${lioness.name}">...</td>
+            <td th:utext="${lioness.age}">...</td>
+        </tr>
+    </table>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
 </body>
 </html>
