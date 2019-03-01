@@ -1,6 +1,6 @@
 package com.epam.learnspring.model.impl;
 
-import com.epam.learnspring.model.CatService;
+import com.epam.learnspring.service.CatService;
 import org.springframework.stereotype.Service;
 
 @Service("barsikCat")

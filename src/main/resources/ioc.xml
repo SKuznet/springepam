@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="cat" class="com.epam.learnspring.model.Cat">
-        <constructor-arg value="Dimok"/>
+    <bean id="lion" class="com.epam.learnspring.model.Lion" scope="singleton">
+        <constructor-arg value="Tom"/>
     </bean>
 </beans>
