@@ -9,8 +9,8 @@
 
 <h:body>
     <script type="text/javascript">
-        var ROOT = '/film';
-        var RestGet = function (id) {
+        var ROOT = '/category';
+        var RestGetById = function (id) {
             $.ajax({
                 type: 'GET',
                 url: ROOT + '/get/' + id,
@@ -100,55 +100,68 @@
     <div class="panel-body">
         <table class="table">
             <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Method</th>
-                    <th>Try</th>
-                </tr>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Try</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Get cat by id</td>
-                    <td><code><strong>GET</strong></code></td>
-                    <td>
-                        id: <input id="getId" value=""/>
-                        <button type="button" onclick="RestGet($('#getId').val())">Try</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Get all cats</td>
-                    <td><code><strong>GET</strong></code></td>
-                    <td>
-                        <button type="button" onclick="RestGetALL()">Try</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Add cat</td>
-                    <td><code><strong>POST</strong></code></td>
-                    <td>
-                        name: <input id="addNameId" value=""/>
-                        description: <input id="addDescriptionId" value=""/>
-                        <button type="button" onclick="RestPOST($('#addNameId').val(), $('#addDescriptionId').val())">Try</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cats update</td>
-                    <td><code><strong>PUT</strong></code></td>
-                    <td>
-                        id: <input id="updateId" value=""/>
-                        name: <input id="updateNameId" value=""/>
-                        description: <input id="updateDescriptionId" value=""/>
-                        <button type="button" onclick="RestPUT($('#updateId').val(), $('#updateNameId').val(), $('#updateDescriptionId').val())">Try</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Delete cat by id</td>
-                    <td><code><strong>DELETE</strong></code></td>
-                    <td>
-                        id: <input id="idForDelete" value=""/>
-                        <button type="button" onclick="RestDelete($('#idForDelete').val())">Try</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>Get category by id</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    id: <input id="getId" value=""/>
+                    <button type="button" onclick="RestGetById($('#getId').val())">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get category by name</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    Name: <input id="getName" value=""/>
+                    <button type="button" onclick="RestGetByName($('#getName').val())">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get all categories</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="RestGetALL()">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Add category</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    name: <input id="addNameId" value=""/>
+                    description: <input id="addDescriptionId" value=""/>
+                    <button type="button"
+                            onclick="RestPOST($('#addNameId').val(), $('#addDescriptionId').val()">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>categories update</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    id: <input id="updateId" value=""/>
+                    name: <input id="updateNameId" value=""/>
+                    <button type="button"
+                            onclick="RestPUT($('#updateId').val(), $('#updateNameId').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Delete category by id</td>
+                <td><code><strong>DELETE</strong></code></td>
+                <td>
+                    id: <input id="idForDelete" value=""/>
+                    <button type="button" onclick="RestDelete($('#idForDelete').val())">Try</button>
+                </td>
+            </tr>
             </tbody>
         </table>
 

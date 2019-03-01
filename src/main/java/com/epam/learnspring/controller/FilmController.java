@@ -33,7 +33,7 @@ public class FilmController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Film delete (@PathVariable(value = "id") long id) {
+    public Film delete(@PathVariable(value = "id") long id) {
         return filmService.delete(id);
     }
 
@@ -43,7 +43,7 @@ public class FilmController {
         return filmService.getById(id);
     }
 
-    @RequestMapping(value = "/get/{name}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/get/name/{name}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public Film getByName(@PathVariable(value = "name") String name) {
         return filmService.getByName(name);

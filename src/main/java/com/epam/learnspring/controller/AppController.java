@@ -1,7 +1,5 @@
 package com.epam.learnspring.controller;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
 
-    // http://localhost:8080/cat
-    @RequestMapping("/cat")
-    @Secured({"ROLE_USER, ROLE_ADMIN"})
-    public String getCatInfo(Model model) {
-        model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
-        return "cat";
+    @RequestMapping("/film")
+    public String getFilmMenu() {
+        return "filmcrud";
     }
 
-    @RequestMapping("/")
-    public String getMenu() {
-        return "catcrud";
+    @RequestMapping("/category")
+    public String getCategoryMenu() {
+        return "categorycrud";
     }
 
     @RequestMapping("/user")
