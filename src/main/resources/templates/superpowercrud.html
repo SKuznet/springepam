@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/xhtml">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</h:head>
+<h:body>
+    <script type="text/javascript">
+        var ROOT = '/superpowers';
+        var RestGet = function (id) {
+            $.ajax({
+                type: 'GET',
+                url: ROOT + '/' + id,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestGetALL = function () {
+            $.ajax({
+                type: 'GET',
+                url: ROOT + '/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPOST = function (title, description) {
+            var JSONObject = {
+                'title': title,
+                'description': description
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: ROOT + '/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUT = function (id, title, description) {
+            var JSONObject = {
+                'id': id,
+                'title': title,
+                'description': description
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/' + id,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestDelete = function (id) {
+            $.ajax({
+                type: 'DELETE',
+                url: ROOT + '/' + id,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+    </script>
+
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Try</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Get superpower by id</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    id: <input id="getSuperPowerId" value=""/>
+                    <button type="button" onclick="RestGet($('#getSuperPowerId').val())">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get all superpowers</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="RestGetALL()">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Add superpower</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    title: <input id="addTitleId" value=""/>
+                    description: <input id="addDescriptionId" value=""/>
+                    <button type="button"
+                            onclick="RestPOST($('#addTitleId').val(), $('#addDescriptionId').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superpower update</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    id: <input id="updateId" value=""/>
+                    title: <input id="updateTitle" value=""/>
+                    description: <input id="updateDecription" value=""/>
+                    <button type="button"
+                            onclick="RestPUT($('#updateId').val(), $('#updateTitle').val(), $('#updateDecription').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Delete superpower by id</td>
+                <td><code><strong>DELETE</strong></code></td>
+                <td>
+                    id: <input id="idForDelete" value=""/>
+                    <button type="button" onclick="RestDelete($('#idForDelete').val())">Try</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>RESPONSE</strong>
+        </div>
+        <div class="panel-body" id="response"></div>
+    </div>
+</h:body>
+</html>

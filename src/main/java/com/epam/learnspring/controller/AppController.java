@@ -1,6 +1,7 @@
 package com.epam.learnspring.controller;
 
 import com.epam.learnspring.model.AnimalService;
+import com.epam.learnspring.service.impl.UniverseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
     private AnimalService animalService;
+    private UniverseServiceImpl universeServiceImpl;
 
     public AnimalService getAnimalService() {
         return animalService;
@@ -39,6 +41,31 @@ public class AppController {
     @RequestMapping("/")
     public String getMenu() {
         return "catcrud";
+    }
+
+    @RequestMapping("/universecrud")
+    public String getUniverseMenu() {
+        return "universecrud";
+    }
+
+    @RequestMapping("/personcrud")
+    public String getPersonMenu() {
+        return "personcrud";
+    }
+
+    @RequestMapping("/supervillaincrud")
+    public String getSuperVillainMenu() {
+        return "supervillaincrud";
+    }
+
+    @RequestMapping("/superherocrud")
+    public String getSuperheroMenu() {
+        return "superherocrud";
+    }
+
+    @RequestMapping("/superpowercrud")
+    public String getSuperpowerMenu() {
+        return "superpowercrud";
     }
 
     @RequestMapping("/user")

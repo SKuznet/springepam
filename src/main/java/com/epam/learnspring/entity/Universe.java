@@ -21,10 +21,10 @@ public class Universe {
     @Column(name = "title")
     private String title;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<SuperHero> heroesOfUniversity;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<SuperVillain> villainOfUniversity;
 
     public Universe(String title) {

@@ -36,5 +36,4 @@ public class SuperHero implements SuperGuys{
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private List<SuperHero> allies;
-
 }

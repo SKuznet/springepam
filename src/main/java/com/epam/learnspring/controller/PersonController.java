@@ -12,40 +12,44 @@ import java.util.List;
 @Controller
 public class PersonController {
 
+    private final String ROOT = "/persons";
     @Autowired
     PersonServiceImpl personServiceImpl;
 
-    @GetMapping("/persons/{id}")
+    @GetMapping(value = ROOT + "/{id}" , produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public Person getPersons(@PathVariable long id) {
         return personServiceImpl.getById(id);
     }
 
-    @GetMapping("/persons")
+    @GetMapping(value = ROOT + "/all", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public List<Person> getPersonById() {
         return personServiceImpl.getAll();
     }
 
-    @PostMapping("persons/add")
+    @PostMapping(value = ROOT + "/add", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public void savePerson(@RequestBody Person person) {
-        personServiceImpl.add(person);
+    public Person savePerson(@RequestBody Person person) {
+        return personServiceImpl.add(person);
     }
 
-    @DeleteMapping("persons/{id}")
+    @DeleteMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public void deletePerson(@PathVariable long id) {
-        personServiceImpl.delete(id);
+    public Person deletePerson(@PathVariable long id) {
+        return personServiceImpl.delete(id);
     }
 
-    @PutMapping("persons/{id}")
+    @PutMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public void updatePerson(@RequestBody Person person, @PathVariable Long id) {
+    public Person updatePerson(@RequestBody Person person, @PathVariable Long id) {
         person.setId(id);
-        personServiceImpl.update(person);
+        return personServiceImpl.update(person);
     }
 
 }

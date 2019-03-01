@@ -15,69 +15,79 @@ public class SuperHeroController {
     @Autowired
     SuperHeroServiceImpl heroServiceImpl;
 
-    private final String tag = "/superheroes/";
+    private final String ROOT = "/superheroes";
 
-    @GetMapping(tag + "{id}")
+    @GetMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero getHeroes(@PathVariable long id) {
+    public SuperHero getHeroeById(@PathVariable long id) {
         return heroServiceImpl.getById(id);
     }
 
-    @GetMapping(tag)
+    @GetMapping(value = ROOT + "/all", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<SuperHero> getHeroById() {
+    public List<SuperHero> getAllHeroes() {
         return heroServiceImpl.getAll();
     }
 
-    @PostMapping(tag + "add")
+    @PostMapping(value = ROOT + "/add", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public void saveHero(@RequestBody SuperHero hero) {
         heroServiceImpl.add(hero);
     }
 
-    @DeleteMapping(tag + "{id}")
+    @DeleteMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public void deleteHero(@PathVariable long id) {
         heroServiceImpl.delete(id);
     }
 
-    @PutMapping(tag + "{id}")
+    @PutMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public void updateHero(@RequestBody SuperHero hero, @PathVariable Long id) {
+    public void updateHero(@RequestBody SuperHero hero, @PathVariable long id) {
         hero.setId(id);
         heroServiceImpl.update(hero);
     }
 
-    @PutMapping(tag + "superpowers/{id}")
+    @PutMapping(value = ROOT + "/addpower", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addSuperPowers(@RequestBody List<SuperPower> powers, @PathVariable Long id) {
-        return heroServiceImpl.addSuperPowers(id, powers);
+    public SuperHero addSuperPowers(@RequestBody HandlerObject handlerObject) {
+        long heroId = handlerObject.getHeroId();
+        long superpowerId = handlerObject.getSuperpowerId();
+        return heroServiceImpl.addSuperPowers(heroId, superpowerId);
     }
 
-    @PutMapping(tag + "allies/{id}")
+    @PutMapping(value = ROOT + "/allies/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addAllies(@RequestBody List<SuperHero> allies, @PathVariable Long id) {
-        return heroServiceImpl.addAllies(id, allies);
+    public SuperHero addAllies(@RequestBody long allyHeroId, @PathVariable long id) {
+        return heroServiceImpl.addAllies(id, allyHeroId);
     }
 
-    @PutMapping(tag + "enemies/{id}")
+    @PutMapping(value = ROOT + "/enemies/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addEnemies(@RequestBody List<SuperVillain> enemies, @PathVariable Long id) {
-        return heroServiceImpl.addEnemies(id, enemies);
+    public SuperHero addEnemies(@RequestBody long enemyVillainId, @PathVariable long id) {
+        return heroServiceImpl.addEnemies(id, enemyVillainId);
     }
 
-    @PutMapping(tag + "universe/{id}")
+    @PutMapping(value = ROOT + "/universe/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addUniverse(@RequestBody Universe universe, @PathVariable Long id) {
-        return heroServiceImpl.addUniverse(id, universe);
+    public SuperHero addUniverse(@RequestBody long universeId, @PathVariable long id) {
+        return heroServiceImpl.addUniverse(id, universeId);
     }
 
-    @PutMapping(tag + "alterego/{id}")
+    @PutMapping(value = ROOT + "/alterego/{id}", produces = "application/json;charset=utf-8")
+    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addAlterEgo(@RequestBody Person person, @PathVariable Long id) {
-        return heroServiceImpl.addAlterEgo(id, person);
+    public SuperHero addAlterEgo(@RequestBody long personId, @PathVariable long id) {
+        return heroServiceImpl.addAlterEgo(id, personId);
     }
 
 }

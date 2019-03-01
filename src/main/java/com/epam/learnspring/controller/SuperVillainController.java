@@ -16,7 +16,7 @@ public class SuperVillainController {
     @Autowired
     SuperVillainServiceImpl villainServiceImpl;
 
-    private final String tag = "/supervillain/";
+    private final String tag = "/supervillains/";
 
     @GetMapping(tag + "{id}")
     @ResponseBody
@@ -53,20 +53,20 @@ public class SuperVillainController {
 
     @PutMapping(tag + "superpowers/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SuperVillain addSuperPowers(@RequestBody List<SuperPower> powers, @PathVariable Long id) {
-        return villainServiceImpl.addSuperPowers(id, powers);
+    public SuperVillain addSuperPowers(@RequestParam Long powerId, @PathVariable Long id) {
+        return villainServiceImpl.addSuperPowers(id, powerId);
     }
 
     @PutMapping(tag + "allies/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SuperVillain addAllies(@RequestBody List<SuperVillain> allies, @PathVariable Long id) {
-        return villainServiceImpl.addAllies(id, allies);
+    public SuperVillain addAllies(@RequestParam Long allyVillainId, @PathVariable Long id) {
+        return villainServiceImpl.addAllies(id, allyVillainId);
     }
 
     @PutMapping(tag + "enemies/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SuperVillain addEnemies(@RequestBody List<SuperHero> enemies, @PathVariable Long id) {
-        return villainServiceImpl.addEnemies(id, enemies);
+    public SuperVillain addEnemies(@RequestParam Long enemyHeroId, @PathVariable Long id) {
+        return villainServiceImpl.addEnemies(id, enemyHeroId);
     }
 
     @PutMapping(tag + "universe/{id}")

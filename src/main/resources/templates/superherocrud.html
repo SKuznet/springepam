@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/xhtml">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</h:head>
+<h:body>
+    <script type="text/javascript">
+        var ROOT = '/superheroes';
+        var RestGet = function (id) {
+            $.ajax({
+                type: 'GET',
+                url: ROOT + '/' + id,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestGetALL = function () {
+            $.ajax({
+                type: 'GET',
+                url: ROOT + '/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPOST = function (name) {
+            var JSONObject = {
+                'name': name
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: ROOT + '/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUTsuperpower = function (superPowerId, heroId) {
+            var JSONObject = {
+                'superPowerId': superPowerId,
+                'heroId': heroId
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/addpower',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUTally = function (superHeroId, id) {
+            var JSONObject = {
+                'superHeroId': superHeroId,
+                'id': id
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/allies/' + id,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUTenemy = function (superVillainId, id) {
+            var JSONObject = {
+                'superVillainId': superVillainId,
+                'id': id
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/enemies/' + id,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUTuniverse = function (universe, id) {
+            var JSONObject = {
+                'universe': universe,
+                'id': id
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/universe/' + id,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestPUTalterego = function (person, id) {
+            var JSONObject = {
+                'person': person,
+                'id': id
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: ROOT + '/alterego/' + id,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var RestDelete = function (id) {
+            $.ajax({
+                type: 'DELETE',
+                url: ROOT + '/' + id,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+    </script>
+
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Try</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Get superhero by id</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    id: <input id="getSuperHeroId" value=""/>
+                    <button type="button" onclick="RestGet($('#getSuperHeroId').val())">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get all superheroes</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="RestGetALL()">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Add superhero</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    name: <input id="addNameId" value=""/>
+                    <button type="button"
+                            onclick="RestPOST($('#addNameId').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superhero add Alterego</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    person: <input id="person" value=""/>
+                    id: <input id="id" value=""/>
+                    <button type="button"
+                            onclick="RestPUTalterego($('#person').val(), $('#id').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superhero add superpower</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    heroId: <input id="heroId" value=""/>
+                    superpowerId: <input id="superpowerId" value=""/>
+                    <button type="button"
+                            onclick="RestPUTsuperpower($('#heroId').val(), $('#superpowerId').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superhero add ally</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    heroId: <input id="updatedHeroId1" value=""/>
+                    allyId: <input id="allyId" value=""/>
+                    <button type="button"
+                            onclick="RestPUTally( $('#allyId').val(), $('#updatedHeroId1').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superhero add enemy</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    heroId: <input id="updatedHeroId2" value=""/>
+                    enemyId: <input id="enemyId" value=""/>
+                    <button type="button"
+                            onclick="RestPUTenemy($('#enemyId').val(), $('#updatedHeroId2').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Superhero add universe</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    heroId: <input id="updatedHeroId3" value=""/>
+                    universeId: <input id="universeId" value=""/>
+                    <button type="button"
+                            onclick="RestPUTuniverse($('#universeId').val(), $('#updatedHeroId3').val())">
+                        Try
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Delete superhero by id</td>
+                <td><code><strong>DELETE</strong></code></td>
+                <td>
+                    id: <input id="idForDelete" value=""/>
+                    <button type="button" onclick="RestDelete($('#idForDelete').val())">Try</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>RESPONSE</strong>
+        </div>
+        <div class="panel-body" id="response"></div>
+    </div>
+</h:body>
+</html>

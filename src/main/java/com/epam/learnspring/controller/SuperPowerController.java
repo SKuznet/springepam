@@ -12,36 +12,37 @@ import java.util.List;
 @Controller
 public class SuperPowerController {
 
+    private final String ROOT = "/superpowers";
     @Autowired
     SuperPowerServiceImpl superPowerServiceImpl;
 
-    @GetMapping("/superpowers")
+    @GetMapping(value = ROOT + "/all", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public List<SuperPower> getSuperPowers() {
         return superPowerServiceImpl.getAll();
     }
 
-    @GetMapping("/superpowers/{id}")
+    @GetMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public SuperPower getSuperPowersById(@PathVariable long id) {
         return superPowerServiceImpl.getById(id);
     }
 
-    @PostMapping("superpowers/add")
+    @PostMapping(value = ROOT + "/add", produces = "application/json;charset=utf-8")
     @ResponseStatus(HttpStatus.CREATED)
     public void saveSuperPower(@RequestBody SuperPower superPower) {
         superPowerServiceImpl.add(superPower);
     }
 
-    @DeleteMapping("superpowers/{id}")
+    @DeleteMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
     @ResponseStatus(HttpStatus.OK)
     public void deleteSuperPowers(@PathVariable long id) {
         superPowerServiceImpl.delete(id);
     }
 
-    @PutMapping("superpowers/{id}")
+    @PutMapping(value = ROOT + "/{id}", produces = "application/json;charset=utf-8")
     @ResponseStatus(HttpStatus.OK)
     public void updateSuperPowers(@RequestBody SuperPower superPower, @PathVariable Long id) {
         superPower.setId(id);
