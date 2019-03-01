@@ -1,6 +1,6 @@
 package com.epam.learnspring.model.impl;
 
-import com.epam.learnspring.model.HeroService;
+import com.epam.learnspring.service.HeroService;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

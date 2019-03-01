@@ -1,4 +1,4 @@
-package com.epam.learnspring.model;
+package com.epam.learnspring.service;
 
 public interface HeroService {
 

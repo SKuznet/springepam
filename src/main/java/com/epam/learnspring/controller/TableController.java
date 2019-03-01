@@ -1,6 +1,6 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.model.service.CreateTable;
+import com.epam.learnspring.service.CreateTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

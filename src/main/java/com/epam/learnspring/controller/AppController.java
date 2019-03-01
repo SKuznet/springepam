@@ -1,8 +1,8 @@
 package com.epam.learnspring.controller;
 
 import com.epam.learnspring.model.Hero;
-import com.epam.learnspring.model.HeroService;
 import com.epam.learnspring.model.Message;
+import com.epam.learnspring.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

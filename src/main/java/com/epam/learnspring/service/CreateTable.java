@@ -1,7 +1,6 @@
-package com.epam.learnspring.model.service;
+package com.epam.learnspring.service;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 public class CreateTable {
 
