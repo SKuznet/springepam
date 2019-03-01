@@ -1,14 +1,8 @@
 package com.epam.learnspring.config;
 
-import com.epam.learnspring.dao.EmployeeDao;
-import com.epam.learnspring.dao.EmployerDao;
-import com.epam.learnspring.dao.UserDao;
-import com.epam.learnspring.dao.impl.EmployeeDaoImpl;
-import com.epam.learnspring.dao.impl.EmployerDaoImpl;
-import com.epam.learnspring.dao.impl.UserDaoImpl;
-import com.epam.learnspring.entity.Employee;
-import com.epam.learnspring.entity.Employer;
-import com.epam.learnspring.entity.User;
+import com.epam.learnspring.dao.*;
+import com.epam.learnspring.dao.impl.*;
+import com.epam.learnspring.entity.*;
 import com.epam.learnspring.security.details.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,4 +31,13 @@ public class AppConfig {
         return new EmployerDaoImpl(Employer.class);
     }
 
+    @Bean
+    public AuthorDao authorDao() {
+        return new AuthorDaoImpl(Author.class);
+    }
+
+    @Bean
+    public BookDao bookDao() {
+        return new BookDaoImpl(Book.class);
+    }
 }

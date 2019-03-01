@@ -100,6 +100,93 @@
                 }
             });
         };
+
+        var AddAuthor = function (name) {
+            var JSONObject = {
+                'name': name
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/author/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var AddBookToAuthor = function (id, bookId) {
+            $.ajax({
+                type: 'POST',
+                url: '/author/addBook/'+ id + '/' + bookId,
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var GetAllAuthors = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/author/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var AddBook = function (title) {
+            var JSONObject = {
+                'title': title
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/book/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var GetAllBooks = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/book/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
     </script>
 
     <div class="panel-body">
@@ -151,18 +238,52 @@
             </tr>
 
             <tr>
-                <td>Update employer</td>
-                <td><code><strong>PUT</strong></code></td>
+                <td>Add author</td>
+                <td><code><strong>POST</strong></code></td>
                 <td>
-                    id: <input id="updateIdEmployer" value=""/>
-                    name: <input id="updateNameEmployer" value=""/>
-                    employeeId: <input id="updateEmployeeIdEmployer" value=""/>
-                    <button type="button" onclick="UpdateEmployer(
-                        $('#updateIdEmployer').val(),
-                        $('#updateNameEmployer').val(),
-                        $('#updateEmployeeIdEmployer').val())">Try</button>
+                    name: <input id="addNameAuthor" value=""/>
+                    <button type="button" onclick="AddAuthor($('#addNameAuthor').val())">Try</button>
                 </td>
             </tr>
+
+            <tr>
+                <td>Get all authors</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="GetAllAuthors()">Try</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Add book to author</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    authorId: <input id="addBookAuthorId" value=""/>
+                    bookId: <input id="addBookBookId" value=""/>
+                    <button type="button" onclick="AddBookToAuthor(
+                        $('#addBookAuthorId').val(),
+                        $('#addBookBookId').val())">Try</button>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Add book</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    name: <input id="addTitleBook" value=""/>
+                    <button type="button" onclick="AddBook($('#addTitleBook').val())">Try</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Get all books</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="GetAllBooks()">Try</button>
+                </td>
+            </tr>
+
             </tbody>
         </table>
 
