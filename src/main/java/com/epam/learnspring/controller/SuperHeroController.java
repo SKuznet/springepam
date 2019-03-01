@@ -56,9 +56,7 @@ public class SuperHeroController {
     @PutMapping(value = ROOT + "/addpower", produces = "application/json;charset=utf-8")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public SuperHero addSuperPowers(@RequestBody HandlerObject handlerObject) {
-        long heroId = handlerObject.getHeroId();
-        long superpowerId = handlerObject.getSuperpowerId();
+    public SuperHero addSuperPowers(@RequestBody long heroId, long  superpowerId) {
         return heroServiceImpl.addSuperPowers(heroId, superpowerId);
     }
 
