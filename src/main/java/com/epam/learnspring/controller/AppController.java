@@ -14,8 +14,8 @@ public class AppController {
     private Message message;
 
     @RequestMapping("/cat")
-    public String getCatInfo(Model model) {
-        model.addAttribute("name", message.getInfo());
+    public String getCatInfo() {
+
         return "cat";
     }
 }
