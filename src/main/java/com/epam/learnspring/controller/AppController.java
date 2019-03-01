@@ -1,9 +1,14 @@
 package com.epam.learnspring.controller;
 
+import com.epam.learnspring.dao.UserDao;
+import com.epam.learnspring.entity.User;
 import com.epam.learnspring.model.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,9 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 public class AppController {
+    @Autowired
+    public UserDao userDao;
+
     private AnimalService animalService;
+
+    @Autowired
+    public BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public AnimalService getAnimalService() {
         return animalService;
@@ -37,12 +50,12 @@ public class AppController {
     }
 
     @RequestMapping("/")
-    public String getMenu() {
-        return "catcrud";
+    public String getMenu(Authentication authentication) {
+        return "employee_crud";
     }
 
     @RequestMapping("/user")
-    public String getUserInfo() {
+    public String getUserInfo(Authentication authentication) {
         return "user";
     }
 

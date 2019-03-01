@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:h="http://www.w3.org/1999/xhtml">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>Employee</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</h:head>
+
+<h:body>
+    <script type="text/javascript">
+        var AddEmployee = function (name, surname,employerId) {
+            var JSONObject = {
+                'name': name,
+                'surname': surname,
+                'employerId' : employerId
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/employee/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var GetAllEmployees = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/employee/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var AddEmployer = function (name) {
+            var JSONObject = {
+                'name': name
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/employer/add',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+        var GetAllEmployers = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/employer/all',
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+
+        var UpdateEmployer = function (id, name, employeeId) {
+            var JSONObject = {
+                'id' : id,
+                'name': name,
+                'employeeId' : employeeId
+            };
+            $.ajax({
+                type: 'PUT',
+                url: '/employer/update',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(JSONObject),
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    $('#response').html(JSON.stringify(result));
+                },
+                error: function (jqXHR) {
+                    $('#response').html(JSON.stringify(jqXHR));
+                }
+            });
+        };
+    </script>
+
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Try</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Add employee</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    name: <input id="addNameEmployee" value=""/>
+                    surname: <input id="addSurnameEmployee" value=""/>
+                    employer id: <input id="addEmployeeEmployerId" value=""/>
+                    <button type="button" onclick="AddEmployee(
+                    $('#addNameEmployee').val(),
+                    $('#addSurnameEmployee').val(),
+                    $('#addEmployeeEmployerId').val()
+                    )">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get all emploies</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="GetAllEmployees()">Try</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Add employer</td>
+                <td><code><strong>POST</strong></code></td>
+                <td>
+                    name: <input id="addNameEmployer" value=""/>
+                    <button type="button" onclick="AddEmployer($('#addNameEmployer').val())">Try</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Get all employers</td>
+                <td><code><strong>GET</strong></code></td>
+                <td>
+                    <button type="button" onclick="GetAllEmployers()">Try</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Update employer</td>
+                <td><code><strong>PUT</strong></code></td>
+                <td>
+                    id: <input id="updateIdEmployer" value=""/>
+                    name: <input id="updateNameEmployer" value=""/>
+                    employeeId: <input id="updateEmployeeIdEmployer" value=""/>
+                    <button type="button" onclick="UpdateEmployer(
+                        $('#updateIdEmployer').val(),
+                        $('#updateNameEmployer').val(),
+                        $('#updateEmployeeIdEmployer').val())">Try</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>RESPONSE</strong>
+        </div>
+        <div class="panel-body" id="response"></div>
+    </div>
+</h:body>
+</html>

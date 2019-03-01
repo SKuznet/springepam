@@ -1,7 +1,5 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.entity.Cat;
-import com.epam.learnspring.entity.CatWoman;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

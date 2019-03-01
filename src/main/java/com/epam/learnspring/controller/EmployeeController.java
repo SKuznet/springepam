@@ -3,6 +3,7 @@ package com.epam.learnspring.controller;
 import com.epam.learnspring.dto.EmployeeDto;
 import com.epam.learnspring.entity.Employee;
 import com.epam.learnspring.service.EmployeeService;
+import com.epam.learnspring.util.EmployeeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class EmployeeController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addEmployee(@RequestBody Employee employee) {
-        return employeeService.add(employee);
+    public Employee addEmployee(@RequestBody EmployeeRequest employeeRequest) {
+        return employeeService.add(employeeRequest);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
@@ -47,6 +48,7 @@ public class EmployeeController {
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+        List<Employee> allEmployees = employeeService.getAllEmployees();
+        return allEmployees;
     }
 }

@@ -58,7 +58,7 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
         return sessionFactory;
     }
 
-    private Session getSession() {
+    protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -21,13 +22,18 @@ public class DataConfig {
     private DataSource dataSource;
 
     @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /*@Bean
     public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
         jdbcDao.setDataSource(dataSource);
         jdbcDao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
         jdbcDao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
         return jdbcDao;
-    }
+    }*/
 
     @Bean
     public JdbcTemplate jdbcTemplate() {

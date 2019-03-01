@@ -4,6 +4,7 @@ import com.epam.learnspring.dao.EmployeeDao;
 import com.epam.learnspring.dto.EmployeeDto;
 import com.epam.learnspring.entity.Employee;
 import com.epam.learnspring.service.EmployeeService;
+import com.epam.learnspring.util.EmployeeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeDto = employeeDto;
     }
 
+
     @Override
-    public Employee add(Employee employee) {
-        return employeeDao.add(employee);
+    public Employee add(EmployeeRequest employeeRequest) {
+        return employeeDao.add(employeeRequest);
     }
 
     @Override
