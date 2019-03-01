@@ -38,6 +38,11 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public Film getByName(String name) {
+        return filmDao.getByName(name);
+    }
+
+    @Override
     public List<Film> getAll() {
         return filmDao.getAll();
     }

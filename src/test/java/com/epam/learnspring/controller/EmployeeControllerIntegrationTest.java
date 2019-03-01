@@ -1,7 +1,5 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.entity.Car;
-import com.epam.learnspring.entity.Employee;
 import org.junit.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;

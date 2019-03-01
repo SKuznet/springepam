@@ -1,51 +1,51 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.entity.Employee;
-import com.epam.learnspring.service.EmployeeService;
+import com.epam.learnspring.entity.Category;
+import com.epam.learnspring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/employee")
+@RequestMapping("/category")
 @Controller
-public class EmployeeController {
+public class CategoryController {
 
-    private final EmployeeService employeeService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addEmployee(@RequestBody Employee employee) {
-        return employeeService.add(employee);
+    public Category add(@RequestBody Category category) {
+        return categoryService.add(category);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addUpdate(@RequestBody Employee employee) {
-        return employeeService.update(employee);
+    public Category update(@RequestBody Category category) {
+        return categoryService.update(category);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addUpdate(@PathVariable(value = "id") long id) {
-        return employeeService.delete(id);
+    public Category delete(@PathVariable(value = "id") long id) {
+        return categoryService.delete(id);
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee getEmployeeById(@PathVariable(value = "id") long id) {
-        return employeeService.getById(id);
+    public Category getById(@PathVariable(value = "id") long id) {
+        return categoryService.getById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public List<Category> getAll() {
+        return categoryService.getAll();
     }
 }

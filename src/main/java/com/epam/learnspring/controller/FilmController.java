@@ -43,6 +43,12 @@ public class FilmController {
         return filmService.getById(id);
     }
 
+    @RequestMapping(value = "/get/{name}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Film getByName(@PathVariable(value = "name") String name) {
+        return filmService.getByName(name);
+    }
+
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public List<Film> getAll() {

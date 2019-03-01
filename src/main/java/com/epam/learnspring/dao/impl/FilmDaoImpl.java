@@ -8,4 +8,10 @@ public class FilmDaoImpl extends BasicDaoImpl<Film> implements FilmDao {
         super(entityClass);
     }
 
+    @Override
+    public Film getByName(String name) {
+        Film film = new Film();
+        film.setName("Name");
+        return film;
+    }
 }

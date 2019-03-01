@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "films")
+@Table(name = "film")
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +20,7 @@ public class Film {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "filmList")
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categoriesList = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -46,11 +46,11 @@ public class Film {
         this.year = year;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public List<Category> getCategoriesList() {
+        return categoriesList;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategoriesList(List<Category> categories) {
+        this.categoriesList = categories;
     }
 }

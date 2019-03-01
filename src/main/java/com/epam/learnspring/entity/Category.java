@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,7 +14,12 @@ public class Category {
     private String name;
     private String description;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "category_Film",
+            joinColumns = { @JoinColumn(name = "category_id") },
+            inverseJoinColumns = { @JoinColumn(name = "film_id") }
+    )
     private List<Film> filmList = new ArrayList<>();
 
     public Long getId() {

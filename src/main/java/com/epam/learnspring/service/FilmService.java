@@ -10,5 +10,6 @@ public interface FilmService {
     Film update(Film film);
     Film delete(long id);
     Film getById(long id);
+    Film getByName(String name);
     List<Film> getAll();
 }

@@ -26,13 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable().formLogin().defaultSuccessUrl("/", false);
     }
 
-    // NON PRODUCTION!!!
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-//        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-//    }
-
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
