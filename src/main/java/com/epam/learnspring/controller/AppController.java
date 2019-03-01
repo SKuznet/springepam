@@ -1,9 +1,7 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.dao.CatDao;
 import com.epam.learnspring.model.AnimalService;
 import com.epam.learnspring.util.CheckTextUtil;
-import net.yandex.speller.services.spellservice.CheckTextRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -17,12 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
     private AnimalService animalService;
-    private final CatDao catDao;
     private final CheckTextUtil checkTextUtil;
 
     @Autowired
-    public AppController(CatDao catDao, CheckTextUtil checkTextUtil) {
-        this.catDao = catDao;
+    public AppController(CheckTextUtil checkTextUtil) {
         this.checkTextUtil = checkTextUtil;
     }
 
@@ -40,17 +36,11 @@ public class AppController {
 //    private Dog barsik = applicationContext.getBean("dog", Dog.class);
 
     // http://localhost:8080/cat
-    @RequestMapping("/cat")
+    @RequestMapping("/human")
     @Secured({"ROLE_USER, ROLE_ADMIN"})
     public String getCatInfo(Model model) {
         model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
         return "cat";
-    }
-
-    @RequestMapping("/")
-    public String getMenu() {
-        catDao.getCatListByName("Barsik");
-        return "catcrud";
     }
 
     @RequestMapping("/user")

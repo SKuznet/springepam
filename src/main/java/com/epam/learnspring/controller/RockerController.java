@@ -1,52 +1,52 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.dto.EmployeeDto;
-import com.epam.learnspring.entity.Employee;
-import com.epam.learnspring.service.EmployeeService;
+import com.epam.learnspring.dto.RockerDto;
+import com.epam.learnspring.entity.Rocker;
+import com.epam.learnspring.service.RockerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/employee")
+@RequestMapping("/rocker")
 @Controller
-public class EmployeeController {
+public class RockerController {
 
-    private final EmployeeService employeeService;
+    private final RockerService rockerService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public RockerController(RockerService rockerService) {
+        this.rockerService = rockerService;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addEmployee(@RequestBody Employee employee) {
-        return employeeService.add(employee);
+    public Rocker addRocker(@RequestBody Rocker rocker) {
+        return rockerService.add(rocker);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addUpdate(@RequestBody Employee employee) {
-        return employeeService.update(employee);
+    public Rocker addUpdate(@RequestBody Rocker rocker) {
+        return rockerService.update(rocker);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee addUpdate(@PathVariable(value = "id") long id) {
-        return employeeService.delete(id);
+    public Rocker delete(@PathVariable(value = "id") long id) {
+        return rockerService.delete(id);
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public EmployeeDto getEmployeeDtoById(@PathVariable(value = "id") long id) {
-        return employeeService.getById(id);
+    public RockerDto getRockerDtoById(@PathVariable(value = "id") long id) {
+        return rockerService.getById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public List<Rocker> getAllRockers() {
+        return rockerService.getAllRockers();
     }
 }

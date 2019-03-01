@@ -1,14 +1,24 @@
 package com.epam.learnspring.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "cats_w")
-public class CatWoman {
+@Table(name = "homes")
+public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column
     private String name;
+
+    @Column
+    private String description;
 
     public long getId() {
         return id;
@@ -33,6 +43,4 @@ public class CatWoman {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private String description;
 }

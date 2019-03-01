@@ -1,46 +1,42 @@
 package com.epam.learnspring.entity;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
-import java.time.LocalDate;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "cats")
-public class Cat {
+@Table(name = "humans")
+public class Human {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cat_id")
+    @Column(name = "human_id")
     private Long id;
-//    @Column
-//    @Type(type = "text")
+
+    @Column
     private String name;
-//    @Transient
+
+    @Column
     private String description;
 
-    public List<CatWoman> getCatWomanList() {
-        return catWomanList;
+    public List<Home> getHomeList() {
+        return homeList;
     }
 
-    public void setCatWomanList(List<CatWoman> catWomanList) {
-        this.catWomanList = catWomanList;
+    public void setHomeList(List<Home> homeList) {
+        this.homeList = homeList;
     }
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<CatWoman> catWomanList = new ArrayList<>();
-//    @Column(columnDefinition = "DATE")
-//    private LocalDate year;
-
-//    public LocalDate getYear() {
-//        return year;
-//    }
-//
-//    public void setYear(LocalDate year) {
-//        this.year = year;
-//    }
+    private List<Home> homeList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -65,6 +61,5 @@ public class Cat {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }

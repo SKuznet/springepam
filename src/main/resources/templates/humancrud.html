@@ -9,7 +9,7 @@
 
 <h:body>
     <script type="text/javascript">
-        var ROOT = '/cat';
+        var ROOT = '/human';
         var RestGet = function (id) {
             $.ajax({
                 type: 'GET',
@@ -110,22 +110,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Get cat by id</td>
+                    <td>Get human by id</td>
                     <td><code><strong>GET</strong></code></td>
                     <td>
-                        id: <input id="getCatId" value=""/>
-                        <button type="button" onclick="RestGet($('#getCatId').val())">Try</button>
+                        id: <input id="getHumanId" value=""/>
+                        <button type="button" onclick="RestGet($('#getHumanId').val())">Try</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Get all cats</td>
+                    <td>Get all humans</td>
                     <td><code><strong>GET</strong></code></td>
                     <td>
                         <button type="button" onclick="RestGetALL()">Try</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Add cat</td>
+                    <td>Add human</td>
                     <td><code><strong>POST</strong></code></td>
                     <td>
                         name: <input id="addNameId" value=""/>
@@ -134,7 +134,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Cats update</td>
+                    <td>Humans update</td>
                     <td><code><strong>PUT</strong></code></td>
                     <td>
                         id: <input id="updateId" value=""/>
@@ -144,7 +144,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Delete cat by id</td>
+                    <td>Delete human by id</td>
                     <td><code><strong>DELETE</strong></code></td>
                     <td>
                         id: <input id="idForDelete" value=""/>

@@ -2,7 +2,6 @@ package com.epam.learnspring.dao;
 
 import com.epam.learnspring.config.AppConfig;
 import com.epam.learnspring.config.HibernateConfig;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,12 @@ import static org.junit.Assert.*;
 @WebAppConfiguration
 @Transactional
 @ContextConfiguration(classes = {AppConfig.class, HibernateConfig.class})
-public class CatDaoImplTest {
+public class HumanDaoImplTest {
     @Autowired
-    private CatDao catDao;
+    private HumanDao humanDao;
 
     @Test
     public void testGetCatListByName() {
-        assertNotNull(catDao.getCatListByName("Barsik"));
+        assertNotNull(humanDao.getCatListByName("Barsik"));
     }
 }

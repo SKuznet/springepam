@@ -2,7 +2,7 @@ package com.epam.learnspring.dto;
 
 import java.time.LocalDate;
 
-public class CarDto {
+public class CityDto {
 
     private Long id;
     private String model;

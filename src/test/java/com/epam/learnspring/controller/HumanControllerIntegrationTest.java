@@ -1,7 +1,7 @@
 package com.epam.learnspring.controller;
 
-import com.epam.learnspring.entity.Cat;
-import com.epam.learnspring.entity.CatWoman;
+import com.epam.learnspring.entity.Human;
+import com.epam.learnspring.entity.Home;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class CatControllerIntegrationTest {
+public class HumanControllerIntegrationTest {
 
     private final static String ROOT = "http://localhost:8080/cat";
     private final static String ADD = "/add";
@@ -35,20 +35,20 @@ public class CatControllerIntegrationTest {
 
     @Test
     public void checkCatAdding() {
-        Cat cat = createCat();
+        Human human = createCat();
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Cat> responseEntity = template.exchange(
+        ResponseEntity<Human> responseEntity = template.exchange(
                 ROOT + GET_BY_ID + "/{id}",
                 HttpMethod.GET,
                 null,
-                Cat.class,
-                cat.getId()
+                Human.class,
+                human.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        Cat catFromDB = responseEntity.getBody();
-        assertNotNull(catFromDB);
+        Human humanFromDB = responseEntity.getBody();
+        assertNotNull(humanFromDB);
 
     }
 
@@ -59,83 +59,83 @@ public class CatControllerIntegrationTest {
         createCat();
         createCat();
 
-        ResponseEntity<List<Cat>> result = template.exchange(
+        ResponseEntity<List<Human>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Cat>>() {
+                new ParameterizedTypeReference<List<Human>>() {
                 }
         );
 
-        List<Cat> catList = result.getBody();
-        assertNotNull(catList);
+        List<Human> humanList = result.getBody();
+        assertNotNull(humanList);
     }
 
     @Test
     public void checkCatsDeletion() {
-        Cat cat = createCat();
+        Human human = createCat();
 
-        assertNotNull(cat);
+        assertNotNull(human);
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Cat> entity = template.exchange(
+        ResponseEntity<Human> entity = template.exchange(
                 ROOT + DELETE + "/{id}",
                 HttpMethod.DELETE,
                 null,
-                Cat.class,
-                cat.getId()
+                Human.class,
+                human.getId()
         );
 
         assertEquals(HttpStatus.OK, entity.getStatusCode());
 
-        ResponseEntity<Cat> deletedEntity = template.exchange(
+        ResponseEntity<Human> deletedEntity = template.exchange(
                 ROOT + GET_BY_ID + "/{id}",
                 HttpMethod.GET,
                 null,
-                Cat.class,
-                cat.getId()
+                Human.class,
+                human.getId()
         );
 
         assertNull(deletedEntity.getBody());
     }
 
-    private Cat createCat() {
+    private Human createCat() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
-        Cat cat = prefillCat();
-        HttpEntity<Cat> entity = new HttpEntity<>(cat, headers);
+        Human human = prefillCat();
+        HttpEntity<Human> entity = new HttpEntity<>(human, headers);
         RestTemplate template = new RestTemplate();
-        Cat createdCat = template.exchange(
+        Human createdHuman = template.exchange(
                 ROOT + ADD,
                 HttpMethod.POST,
                 entity,
-                Cat.class
+                Human.class
         ).getBody();
 
-        assertNotNull(createdCat.getId());
-        assertEquals("Barsik", createdCat.getName());
-        return createdCat;
+        assertNotNull(createdHuman.getId());
+        assertEquals("Barsik", createdHuman.getName());
+        return createdHuman;
     }
 
-    private Cat prefillCat() {
-        Cat cat = new Cat();
-        cat.setName("Barsik");
-        cat.setDescription("Hungry");
+    private Human prefillCat() {
+        Human human = new Human();
+        human.setName("Barsik");
+        human.setDescription("Hungry");
 
-        CatWoman riska = new CatWoman();
+        Home riska = new Home();
         riska.setName("Riska");
         riska.setDescription("Good");
 
-        CatWoman murka = new CatWoman();
+        Home murka = new Home();
         murka.setName("Murka");
         murka.setDescription("angry");
 
-        List<CatWoman> catWomens = new ArrayList<>();
+        List<Home> catWomens = new ArrayList<>();
         catWomens.add(riska);
         catWomens.add(murka);
 
-        cat.setCatWomanList(catWomens);
-        return cat;
+        human.setHomeList(catWomens);
+        return human;
     }
 }

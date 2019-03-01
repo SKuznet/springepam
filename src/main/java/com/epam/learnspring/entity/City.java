@@ -8,24 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "cars")
-public class Car {
+@Table(name = "cities")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String model;
+
+    private String type;
+
     @Column(columnDefinition = "DATE")
     private LocalDate year;
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "carList")
-    private List<Employee> employees = new ArrayList<>();
 
-    public List<Employee> getEmployees() {
-        return employees;
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "cityList")
+    private List<Rocker> rockers = new ArrayList<>();
+
+    public List<Rocker> getRockers() {
+        return rockers;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setRockers(List<Rocker> rockers) {
+        this.rockers = rockers;
     }
 
     public long getId() {
@@ -36,12 +39,12 @@ public class Car {
         this.id = id;
     }
 
-    public String getModel() {
-        return model;
+    public String getType() {
+        return type;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setType(String model) {
+        this.type = type;
     }
 
     public LocalDate getYear() {
