@@ -4,14 +4,16 @@ import com.epam.learnspring.dao.BasicDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.sql.SQLException;
 import java.util.List;
 
-@Transactional
+@Transactional(rollbackFor = SQLException.class, readOnly = true, propagation = Propagation.MANDATORY)
 public class BasicDaoImpl<T> implements BasicDao<T> {
     private final Class<T> entityClass;
     @Autowired

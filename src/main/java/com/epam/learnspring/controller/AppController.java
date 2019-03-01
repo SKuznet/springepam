@@ -2,6 +2,8 @@ package com.epam.learnspring.controller;
 
 import com.epam.learnspring.dao.CatDao;
 import com.epam.learnspring.model.AnimalService;
+import com.epam.learnspring.util.CheckTextUtil;
+import net.yandex.speller.services.spellservice.CheckTextRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -15,8 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
     private AnimalService animalService;
+    private final CatDao catDao;
+    private final CheckTextUtil checkTextUtil;
+
     @Autowired
-    private CatDao catDao;
+    public AppController(CatDao catDao, CheckTextUtil checkTextUtil) {
+        this.catDao = catDao;
+        this.checkTextUtil = checkTextUtil;
+    }
 
     public AnimalService getAnimalService() {
         return animalService;
@@ -60,5 +68,12 @@ public class AppController {
         model.addAttribute("password", password);
         model.addAttribute("passwordAfterEncode", new BCryptPasswordEncoder().encode(password));
         return "password";
+    }
+
+    @RequestMapping("/check/{text}")
+    public String checkTextSpeller(@PathVariable("text") String text, Model model) {
+        model.addAttribute("text", "text for checking:  " + text);
+        model.addAttribute("var", checkTextUtil.checkText(text));
+        return "spell";
     }
 }
